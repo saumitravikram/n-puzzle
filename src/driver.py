@@ -36,19 +36,29 @@ def triggerSearch():
         result=None
     
 def printResult(result):
+    target = open('output.txt', 'w')
     if result!=None:
         result.computeResult()
-        print 'path_to_goal: ' + str(result.dect['path_to_goal'])
-        print 'cost_to_path: ' + str(result.dect['cost_to_path'])
-        print 'nodes_expanded: ' + str(result.dect['nodes_expanded'])
-        print 'fringe_size: ' + str(result.dect['fringe_size'])
-        print 'max_fringe_size: ' + str(result.dect['max_fringe_size'])
-        print 'search_depth: ' + str(result.dect['search_depth'])
-        print 'max_search_depth: ' + str(result.dect['max_search_depth'])
-        print 'running_time: ' + str(stop-start)
-        print 'max_ram_usage: ' + str(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/(1024*1024))
+        target.write('path_to_goal: ' + str(result.dect['path_to_goal']))
+        target.write("\n")
+        target.write('cost_of_path: ' + str(result.dect['cost_to_path']))
+        target.write("\n")
+        target.write('nodes_expanded: ' + str(result.dect['nodes_expanded']))
+        target.write("\n")
+        target.write('fringe_size: ' + str(result.dect['fringe_size']))
+        target.write("\n")
+        target.write('max_fringe_size: ' + str(result.dect['max_fringe_size']))
+        target.write("\n")
+        target.write('search_depth: ' + str(result.dect['search_depth']))
+        target.write("\n")
+        target.write('max_search_depth: ' + str(result.dect['max_search_depth']))
+        target.write("\n")
+        target.write('running_time: ' + str(float("{0:.8f}".format(stop-start))))
+        target.write("\n")
+        target.write('max_ram_usage: ' + str(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/(1024*1024)))
     else:
         print 'Wrong parameters'
+    target.close()
 
 if __name__ == '__main__':
     
