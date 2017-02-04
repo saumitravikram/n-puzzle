@@ -45,3 +45,12 @@ class State(Board):
             newStates.append(State(self,self.MoveRight(),'Right',self.cost+1))
         return newStates
         
+    def h(self):
+        manhatenCost=0
+        i=0
+        while i < len(self.boardConfig) :
+            columnCost=abs((int)(self.boardConfig[i]/self.N)-(int)(i/self.N))
+            rowCost=abs(self.boardConfig[i]%self.N-i%self.N)
+            manhatenCost+=(rowCost+columnCost)
+            i+=1
+        return manhatenCost
