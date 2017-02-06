@@ -49,8 +49,9 @@ class State(Board):
         manhatenCost=0
         i=0
         while i < len(self.boardConfig) :
-            columnCost=abs((int)(self.boardConfig[i]/self.N)-(int)(i/self.N))
-            rowCost=abs(self.boardConfig[i]%self.N-i%self.N)
-            manhatenCost+=(rowCost+columnCost)
+            if self.boardConfig[i] != 0:
+                columnCost=abs((int)(self.boardConfig[i]/self.N)-(int)(i/self.N))
+                rowCost=abs(self.boardConfig[i]%self.N-i%self.N)
+                manhatenCost+=(rowCost+columnCost)
             i+=1
         return manhatenCost

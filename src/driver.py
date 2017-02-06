@@ -8,6 +8,7 @@ from State import State
 from BFS import BFS
 from DFS import DFS
 from AST import AST
+from IDA import IDA
 import resource
 import timeit
 
@@ -30,7 +31,9 @@ def triggerSearch():
         search=BFS(state)
     elif searchAlgo == 'AST' :
         search=AST(state)
-    
+    elif searchAlgo == 'IDA' :
+        search=IDA(state)
+        
     if search!=None:
         start = timeit.default_timer()
         result=search.searchAlgo()
